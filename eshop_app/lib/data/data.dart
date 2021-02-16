@@ -105,8 +105,8 @@ List<CategorieModel> getCategories() {
   CategorieModel categorieModel = new CategorieModel();
   //1
   categorieModel.categorieName = "Shoes";
-  categorieModel.color1 = "0xff50F9B4";
-  categorieModel.color2 = "0xff38CAE9";
+  categorieModel.color1 = "0xffFFB397";
+  categorieModel.color2 = "0xffF46AA0";
   categorieModel.imgAssetPath = "assets/images/1i.png";
   categories.add(categorieModel);
   categorieModel = new CategorieModel();

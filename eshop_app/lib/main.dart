@@ -34,7 +34,7 @@ class _MyHomePageState extends State<MyHomePage> {
   List<CategorieModel> categories = new List();
   @override
   void initState() {
-    // TODO: implement initState
+    // implement initState
     super.initState();
     trendingProducts = getTrendingProducts();
     products = getProducts();
@@ -100,7 +100,35 @@ class _MyHomePageState extends State<MyHomePage> {
                 height: 30,
               ),
 
-              /// Trending
+              /// Products
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: 22),
+                child: Text(
+                  "Products",
+                  style: TextStyle(color: Colors.black87, fontSize: 22),
+                ),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Container(
+                height: 135,
+                padding: EdgeInsets.only(left: 22),
+                child: ListView.builder(
+                    itemCount: categories.length,
+                    shrinkWrap: true,
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (context, index) {
+                      return CategorieTile(
+                        categorieName: categories[index].categorieName,
+                        imgAssetPath: categories[index].imgAssetPath,
+                        color1: categories[index].color1,
+                        color2: categories[index].color2,
+                      );
+                    }),
+              ),
+
+              /// New stock
               Container(
                 padding: EdgeInsets.symmetric(horizontal: 22),
                 child: Row(
@@ -113,7 +141,6 @@ class _MyHomePageState extends State<MyHomePage> {
                     SizedBox(
                       width: 12,
                     ),
-                    Text("")
                   ],
                 ),
               ),
@@ -143,7 +170,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 height: 40,
               ),
 
-              /// Best Selling
+              /// Most sold
               Container(
                 padding: EdgeInsets.symmetric(horizontal: 22),
                 child: Row(
@@ -156,7 +183,6 @@ class _MyHomePageState extends State<MyHomePage> {
                     SizedBox(
                       width: 12,
                     ),
-                    Text("")
                   ],
                 ),
               ),
@@ -180,34 +206,6 @@ class _MyHomePageState extends State<MyHomePage> {
                       );
                     }),
               ),
-
-              /// Top categorie
-              Container(
-                padding: EdgeInsets.symmetric(horizontal: 22),
-                child: Text(
-                  "Products",
-                  style: TextStyle(color: Colors.black87, fontSize: 22),
-                ),
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              Container(
-                height: 240,
-                padding: EdgeInsets.only(left: 22),
-                child: ListView.builder(
-                    itemCount: categories.length,
-                    shrinkWrap: true,
-                    scrollDirection: Axis.horizontal,
-                    itemBuilder: (context, index) {
-                      return CategorieTile(
-                        categorieName: categories[index].categorieName,
-                        imgAssetPath: categories[index].imgAssetPath,
-                        color1: categories[index].color1,
-                        color2: categories[index].color2,
-                      );
-                    }),
-              )
             ],
           ),
         ));
@@ -231,7 +229,7 @@ class TrendingTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: MediaQuery.of(context).size.width - 70,
+      width: MediaQuery.of(context).size.width - 95,
       margin: EdgeInsets.only(right: 13),
       decoration: BoxDecoration(
         color: Colors.white,
@@ -240,7 +238,7 @@ class TrendingTile extends StatelessWidget {
           BoxShadow(
             offset: Offset(1.0, 1.0),
             blurRadius: 15.0,
-            color: Colors.black87.withOpacity(0.05),
+            color: Colors.black87.withOpacity(0.2),
           ),
         ],
       ),
@@ -311,11 +309,10 @@ class TrendingTile extends StatelessWidget {
                   padding: EdgeInsets.symmetric(horizontal: 12),
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(4),
-                      gradient: LinearGradient(colors: [
-                        const Color(0xff8EA2FF),
-                        const Color(0xff557AC7)
-                      ])),
+                    borderRadius: BorderRadius.circular(4),
+                    gradient: LinearGradient(
+                        colors: <Color>[Colors.red, Colors.blue]),
+                  ),
                   child: Text(
                     "Add to cart",
                     style: TextStyle(color: Colors.white),
@@ -470,7 +467,7 @@ class CategorieTile extends StatelessWidget {
                   Color(int.parse(color1)),
                   Color(int.parse(color2))
                 ]),
-                borderRadius: BorderRadius.circular(8)),
+                borderRadius: BorderRadius.circular(100)),
             padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 8),
             child: Container(
                 child: Image.asset(
